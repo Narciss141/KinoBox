@@ -15,59 +15,126 @@
     </header>
 
     <main class="container">
-        <div class="movies-grid">
-            <!-- Фільм 1 -->
-            <article class="movie-card">
-                <div class="movie-poster">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Інтерстеллар">
-                    <span class="movie-rating">⭐ 8.6</span>
+        <!-- Панель адміністратора (форма додавання) -->
+        <section class="admin-panel">
+            <h2>➕ Додати новий фільм</h2>
+            <form id="movie-form">
+                <div class="form-group">
+                    <input type="text" id="title" placeholder="Назва фільму (наприклад, Матриця)" required>
                 </div>
-                <div class="movie-info">
-                    <h2>Інтерстеллар</h2>
-                    <div class="movie-meta">
-                        <span class="year">2014</span>
-                        <span class="genre">Фантастика, Драма</span>
-                    </div>
-                    <p class="movie-desc">Команда дослідників вирушає крізь червоточину в космосі, щоб забезпечити майбутнє людства.</p>
+                <div class="form-row">
+                    <input type="text" id="year" placeholder="Рік (наприклад, 1999)" required>
+                    <input type="text" id="genre" placeholder="Жанр (наприклад, Бойовик)" required>
+                    <input type="text" id="rating" placeholder="Рейтинг (наприклад, ⭐ 8.7)" required>
                 </div>
-            </article>
+                <div class="form-group">
+                    <input type="url" id="poster" placeholder="Посилання на постер (картинку в інтернеті)" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="desc" placeholder="Короткий опис сюжету..." rows="2" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Опублікувати фільм</button>
+            </form>
+        </section>
 
-            <!-- Фільм 2 -->
-            <article class="movie-card">
-                <div class="movie-poster">
-                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="Початок">
-                    <span class="movie-rating">⭐ 8.8</span>
-                </div>
-                <div class="movie-info">
-                    <h2>Початок</h2>
-                    <div class="movie-meta">
-                        <span class="year">2010</span>
-                        <span class="genre">Фантастика, Бойовик</span>
-                    </div>
-                    <p class="movie-desc">Злодій, який краде секрети через підсвідомість під час сну, отримує завдання впровадити ідею.</p>
-                </div>
-            </article>
-
-            <!-- Фільм 3 -->
-            <article class="movie-card">
-                <div class="movie-poster">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Дюна">
-                    <span class="movie-rating">⭐ 8.0</span>
-                </div>
-                <div class="movie-info">
-                    <h2>Дюна</h2>
-                    <div class="movie-meta">
-                        <span class="year">2021</span>
-                        <span class="genre">Пригоди, Фантастика</span>
-                    </div>
-                    <p class="movie-desc">Світлопалацтво Атрідів вирушає на найнебезпечнішу планету у всесвіті — Арракіс.</p>
-                </div>
-            </article>
-        </div>
+        <!-- Список фільмів -->
+        <section>
+            <h2 class="section-title">Каталог фільмів</h2>
+            <div class="movies-grid" id="movies-grid">
+                <!-- Фільми будуть завантажуватись сюди автоматично -->
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
         <p>&copy; 2026 KinoBox. Усі права захищені.</p>
     </footer>
+
+    <script>
+        // Початкові фільми за замовчуванням
+        const defaultMovies = [
+            {
+                title: "Інтерстеллар",
+                year: "2014",
+                genre: "Фантастика, Драма",
+                rating: "⭐ 8.6",
+                poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80",
+                desc: "Команда дослідників вирушає крізь червоточину в космосі, щоб забезпечити майбутнє людства."
+            },
+            {
+                title: "Початок",
+                year: "2010",
+                genre: "Фантастика, Бойовик",
+                rating: "⭐ 8.8",
+                poster: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80",
+                desc: "Злодій, який краде секрети через підсвідомість під час сну, отримує завдання впровадити ідею."
+            },
+            {
+                title: "Дюна",
+                year: "2021",
+                genre: "Пригоди, Фантастика",
+                rating: "⭐ 8.0",
+                poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+                desc: "Світлопалацтво Атрідів вирушає на найнебезпечнішу планету у всесвіті — Арракіс."
+            }
+        ];
+
+        // Завантаження збережених фільмів або використання стандартних
+        let movies = JSON.parse(localStorage.getItem('kinobox_movies')) || defaultMovies;
+
+        const grid = document.getElementById('movies-grid');
+        const form = document.getElementById('movie-form');
+
+        function renderMovies() {
+            grid.innerHTML = '';
+            movies.forEach((movie, index) => {
+                const card = document.createElement('article');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    <div class="movie-poster">
+                        <img src="${movie.poster}" alt="${movie.title}">
+                        <span class="movie-rating">${movie.rating}</span>
+                    </div>
+                    <div class="movie-info">
+                        <h2>${movie.title}</h2>
+                        <div class="movie-meta">
+                            <span class="year">${movie.year}</span>
+                            <span class="genre">${movie.genre}</span>
+                        </div>
+                        <p class="movie-desc">${movie.desc}</p>
+                        <button class="btn-delete" onclick="deleteMovie(${index})">Видалити</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newMovie = {
+                title: document.getElementById('title').value,
+                year: document.getElementById('year').value,
+                genre: document.getElementById('genre').value,
+                rating: document.getElementById('rating').value,
+                poster: document.getElementById('poster').value,
+                desc: document.getElementById('desc').value
+            };
+
+            movies.unshift(newMovie); // Додаємо на початок списку
+            localStorage.setItem('kinobox_movies', JSON.stringify(movies));
+            renderMovies();
+            form.reset();
+        });
+
+        function deleteMovie(index) {
+            if(confirm('Видалити цей фільм із бази?')) {
+                movies.splice(index, 1);
+                localStorage.setItem('kinobox_movies', JSON.stringify(movies));
+                renderMovies();
+            }
+        }
+
+        renderMovies();
+    </script>
 </body>
 </html>
