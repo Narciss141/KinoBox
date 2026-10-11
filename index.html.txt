@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя База Кіно</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🎬 Моя База Кіно</h1>
+        <p>Власний каталог улюблених фільмів та серіалів</p>
+    </header>
+
+    <main class="container">
+        <section class="movie-card">
+            <h2>Інтерстеллар (Interstellar)</h2>
+            <p><strong>Рік:</strong> 2014</p>
+            <p><strong>Жанр:</strong> Фантастика, Драма</p>
+            <p><strong>Опис:</strong> Команда дослідників вирушає крізь червоточину в космосі, щоб забезпечити майбутнє людства.</p>
+        </section>
+        
+        <section class="movie-card">
+            <h2>Початок (Inception)</h2>
+            <p><strong>Рік:</strong> 2010</p>
+            <p><strong>Жанр:</strong> Фантастика, Бойовик</p>
+            <p><strong>Опис:</strong> Злодій, який краде секрети через підсвідомість під час сну, отримує завдання впровадити ідею.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Власник сайту. Усі права захищені.</p>
+    </footer>
+</body>
+</html>
