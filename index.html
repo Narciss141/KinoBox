@@ -3,33 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя База Кіно</title>
+    <title>KinoBox — Твоя База Кіно</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>🎬 Моя База Кіно</h1>
-        <p>Власний каталог улюблених фільмів та серіалів</p>
+    <header class="site-header">
+        <div class="header-content">
+            <h1>🎬 KinoBox</h1>
+            <p>Сучасний каталог улюблених фільмів та серіалів</p>
+        </div>
     </header>
 
     <main class="container">
-        <section class="movie-card">
-            <h2>Інтерстеллар (Interstellar)</h2>
-            <p><strong>Рік:</strong> 2014</p>
-            <p><strong>Жанр:</strong> Фантастика, Драма</p>
-            <p><strong>Опис:</strong> Команда дослідників вирушає крізь червоточину в космосі, щоб забезпечити майбутнє людства.</p>
-        </section>
-        
-        <section class="movie-card">
-            <h2>Початок (Inception)</h2>
-            <p><strong>Рік:</strong> 2010</p>
-            <p><strong>Жанр:</strong> Фантастика, Бойовик</p>
-            <p><strong>Опис:</strong> Злодій, який краде секрети через підсвідомість під час сну, отримує завдання впровадити ідею.</p>
-        </section>
+        <div class="movies-grid">
+            <!-- Фільм 1 -->
+            <article class="movie-card">
+                <div class="movie-poster">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Інтерстеллар">
+                    <span class="movie-rating">⭐ 8.6</span>
+                </div>
+                <div class="movie-info">
+                    <h2>Інтерстеллар</h2>
+                    <div class="movie-meta">
+                        <span class="year">2014</span>
+                        <span class="genre">Фантастика, Драма</span>
+                    </div>
+                    <p class="movie-desc">Команда дослідників вирушає крізь червоточину в космосі, щоб забезпечити майбутнє людства.</p>
+                </div>
+            </article>
+
+            <!-- Фільм 2 -->
+            <article class="movie-card">
+                <div class="movie-poster">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="Початок">
+                    <span class="movie-rating">⭐ 8.8</span>
+                </div>
+                <div class="movie-info">
+                    <h2>Початок</h2>
+                    <div class="movie-meta">
+                        <span class="year">2010</span>
+                        <span class="genre">Фантастика, Бойовик</span>
+                    </div>
+                    <p class="movie-desc">Злодій, який краде секрети через підсвідомість під час сну, отримує завдання впровадити ідею.</p>
+                </div>
+            </article>
+
+            <!-- Фільм 3 -->
+            <article class="movie-card">
+                <div class="movie-poster">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Дюна">
+                    <span class="movie-rating">⭐ 8.0</span>
+                </div>
+                <div class="movie-info">
+                    <h2>Дюна</h2>
+                    <div class="movie-meta">
+                        <span class="year">2021</span>
+                        <span class="genre">Пригоди, Фантастика</span>
+                    </div>
+                    <p class="movie-desc">Світлопалацтво Атрідів вирушає на найнебезпечнішу планету у всесвіті — Арракіс.</p>
+                </div>
+            </article>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Власник сайту. Усі права захищені.</p>
+    <footer class="site-footer">
+        <p>&copy; 2026 KinoBox. Усі права захищені.</p>
     </footer>
 </body>
 </html>
